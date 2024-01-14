@@ -4,7 +4,6 @@ import { Todo } from "@prisma/client";
 import { TodoItem } from "..";
 import * as todosApi from '@/todos/helpers/todos';
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 interface Props {
     todos?: Todo[];
