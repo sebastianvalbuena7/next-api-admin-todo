@@ -12,7 +12,7 @@ interface Props {
 
 export const TodosGrid = ({ todos = [] }: Props) => {
 
-    const router = useRouter();
+    // const router = useRouter();
 
     // const toggleTodo = async (id: string, complete: boolean) => {
     //     const updateTodo = await todosApi.updateTodo(id, complete);

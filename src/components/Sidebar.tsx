@@ -1,8 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-import { CiLogout } from "react-icons/ci"
+import { CiLogout, CiShop } from "react-icons/ci"
 import { SidebarItem } from "./SidebarItem"
 import { IoCalendarOutline, IoCheckboxOutline, IoListOutline } from "react-icons/io5";
+import { LuCookie } from "react-icons/lu";
 
 const menuItems = [
     {
@@ -19,6 +20,16 @@ const menuItems = [
         icon: <IoListOutline />,
         title: 'Server Actions',
         path: '/dashboard/server-todos'
+    },
+    {
+        icon: <LuCookie />,
+        title: 'Cookies',
+        path: '/dashboard/cookies'
+    },
+    {
+        icon: <CiShop size={20} />,
+        title: 'Products',
+        path: '/dashboard/products'
     }
 ];
 
