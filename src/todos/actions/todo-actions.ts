@@ -1,5 +1,6 @@
 'use server';
 
+import { getUserServerSession } from "@/auth/actions/auth-actions";
 import prisma from "@/lib/prisma";
 import { Todo } from "@prisma/client";
 import { revalidatePath } from "next/cache";
@@ -32,9 +33,11 @@ export const toggleTodo = async (id: string, complete: boolean): Promise<Todo> =
 }
 
 export const addTodo = async (description: string) => {
+    const session = await getUserServerSession();
     try {
         const todo = await prisma.todo.create({
             data: {
+                userId: session?.id!,
                 description
             }
         });
@@ -50,10 +53,12 @@ export const addTodo = async (description: string) => {
 }
 
 export const deleteTodosCompleted = async (): Promise<void> => {
+    const session = await getUserServerSession();
     try {
         await prisma.todo.deleteMany({
             where: {
-                complete: true
+                complete: true,
+                userId: session?.id
             }
         });
         revalidatePath('/dashboard/server-todos');
